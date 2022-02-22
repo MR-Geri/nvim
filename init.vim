@@ -231,15 +231,20 @@ require("nvim-autopairs").setup(
 )
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({map_char = {tex = ""}}))
+
 EOF
 
+" Search
 nnoremap ff <cmd>Telescope find_files<cr>
 nnoremap fg <cmd>Telescope live_grep<cr>
 nnoremap fb <cmd>Telescope buffers<cr>
 nnoremap fh <cmd>Telescope help_tags<cr>
+nnoremap fj :Telescope <cr>
+
 nmap  <F8> :TagbarToggle <CR> 
 nnoremap tn :tabnew<CR>:NERDTree<CR>
 nnoremap tt :terminal<CR><Insert>
+" Formatting
 map  <F3> :Neoformat <CR> 
 map  <F4> :Neomake <CR>
 map <F5> :NeomakeClean <CR>
