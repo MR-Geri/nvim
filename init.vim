@@ -110,10 +110,14 @@ let g:neomake_open_list = 2
 
 lua << EOF
 --settings url: https://github.com/luisiacc/gruvbox-baby/blob/main/lua/gruvbox-baby/theme.lua
-local colors = require("gruvbox-baby.colors").config()
+local c = require("gruvbox-baby.colors").config()
+config_gruvbox = require("gruvbox-baby.config")
 vim.g.gruvbox_baby_highlights = {
     Normal = {bg = '#2b2b2b'},
-    CursorLineNr = { fg = colors.orange, style = "bold" },
+    CursorLineNr = { fg = c.orange, style = "bold" },
+    TSProperty = { fg = c.light_blue },
+    TSVariable = { fg = c.foreground },
+    pythonTSVariable = { fg = c.foreground, bg = c.NONE, style = "NONE" },
     CursorLine = { bg = "#494240" },
     }
 vim.cmd[[colorscheme gruvbox-baby]]
@@ -318,7 +322,19 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
     max_file_lines = nil, -- Do not enable for files with more than n lines, int
-  } 
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  indent = {
+    enable = true
+  },
 }
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -424,6 +440,10 @@ autocmd FileType c map <buffer> <C-r> :w<CR>:tabnew %<CR>:terminal gcc % -std=c9
 autocmd FileType c imap <buffer> <C-r> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm; ./comp_file<CR><Insert>
 autocmd FileType c vmap <buffer> cc :norm i//<CR>
 autocmd FileType c vmap <buffer> uc :norm ^x^x<CR>
+
+autocmd FileType vim vmap <buffer> cc :norm i--<CR>
+autocmd FileType vim vmap <buffer> uc :norm ^x^x<CR>
+
 
 
 " NERDTree
