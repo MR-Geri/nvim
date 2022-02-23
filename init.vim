@@ -30,6 +30,9 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'windwp/nvim-autopairs'
 Plug 'onsails/lspkind-nvim'
 
+" git
+Plug 'tpope/vim-fugitive'
+
 " Autoformatting
 Plug 'sbdchd/neoformat'
 Plug 'neomake/neomake'
