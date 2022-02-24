@@ -36,6 +36,7 @@ Plug 'tpope/vim-fugitive'
 " Autoformatting
 Plug 'sbdchd/neoformat'
 Plug 'neomake/neomake'
+Plug 'tpope/vim-surround'
 
 " Color
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -105,6 +106,7 @@ require('lualine').setup {
 END
 " Autoformatting
 let g:neoformat_run_all_formatters = 1
+"let g:neoformat_verbose  =  1
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_open_list = 2
 
