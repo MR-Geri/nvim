@@ -115,7 +115,7 @@ config_gruvbox = require("gruvbox-baby.config")
 vim.g.gruvbox_baby_highlights = {
     Normal = {bg = '#2b2b2b'},
     CursorLineNr = { fg = c.orange, style = "bold" },
-    TSProperty = { fg = c.light_blue },
+    TSParameter = { fg = '#69d1fb' },
     TSVariable = { fg = c.foreground },
     pythonTSVariable = { fg = c.foreground, bg = c.NONE, style = "NONE" },
     CursorLine = { bg = "#494240" },
