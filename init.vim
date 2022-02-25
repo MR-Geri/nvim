@@ -105,7 +105,7 @@ require('lualine').setup {
 }
 END
 " Autoformatting
-let g:neoformat_run_all_formatters = 1
+let g:neoformat_enabled_python = ['autopep8', 'yapf']
 "let g:neoformat_verbose  =  1
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_open_list = 2

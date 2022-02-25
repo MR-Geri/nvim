@@ -1,6 +1,6 @@
 Зависимости:  
 ```
-pip install poetry flake8 pyright yapf toml
+pip install poetry flake8 pyright yapf toml autopep8
 sudo dnf install clangd
 ```
 Для Python
