@@ -254,9 +254,9 @@ nmap  <F8> :TagbarToggle <CR>
 nnoremap tn :tabnew<CR>:NERDTree<CR>
 nnoremap tt :terminal<CR><Insert>
 " Formatting
-map  <F3> :Neoformat <CR> 
-map  <F4> :Neomake <CR>
-map <F5> :NeomakeClean <CR>
+map  <F2> :Neoformat <CR> 
+map  <F3> :Neomake <CR>
+map <F4> :NeomakeClean <CR>
 map <lo> :lopen <CR>
 
 
@@ -283,6 +283,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<F10>', '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR><cmd>edit!<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders)))<CR>', opts)
@@ -433,13 +434,13 @@ map gw :Bclose<cr>
 
 autocmd FileType python,c,cpp set colorcolumn=90
 
-autocmd FileType python map <buffer> <C-r> :w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert>
-autocmd FileType python imap <buffer> <C-r> <esc>:w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert>
+autocmd FileType python map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert>
+autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert>
 autocmd FileType python vmap <buffer> cc :norm i#<CR>
 autocmd FileType python vmap <buffer> uc :norm ^x<CR>
 
-autocmd FileType c map <buffer> <C-r> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm; ./comp_file<CR><Insert>
-autocmd FileType c imap <buffer> <C-r> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm; ./comp_file<CR><Insert>
+autocmd FileType c map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm; ./comp_file<CR><Insert>
+autocmd FileType c imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm; ./comp_file<CR><Insert>
 autocmd FileType c vmap <buffer> cc :norm i//<CR>
 autocmd FileType c vmap <buffer> uc :norm ^x^x<CR>
 
