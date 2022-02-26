@@ -116,7 +116,10 @@ local c = require("gruvbox-baby.colors").config()
 config_gruvbox = require("gruvbox-baby.config")
 vim.g.gruvbox_baby_highlights = {
     Normal = {bg = '#2b2b2b'},
-    CursorLineNr = { fg = c.orange, style = "bold" },
+    SpecialKey = { fg = c.soft_green },
+    IndentBlanklineChar = { fg = '#606b6b' },
+    IndentBlanklineSpaceChar = { fg = '#606b6b' },
+    IndentBlanklineContextChar = { fg = '#365050' },
     TSParameter = { fg = '#69d1fb' },
     TSVariable = { fg = c.foreground },
     pythonTSVariable = { fg = c.foreground, bg = c.NONE, style = "NONE" },
@@ -283,7 +286,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<F10>', '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR><cmd>edit!<CR>', opts)
+  buf_set_keymap('n', '<F6>', '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR><cmd>edit!<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders)))<CR>', opts)
@@ -432,7 +435,7 @@ map gp :bp<cr>
 map gw :Bclose<cr>
 
 
-autocmd FileType python,c,cpp set colorcolumn=90
+autocmd FileType python,c,cpp set colorcolumn=80
 
 autocmd FileType python map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert>
 autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert>
