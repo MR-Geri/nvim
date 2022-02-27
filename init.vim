@@ -117,8 +117,8 @@ config_gruvbox = require("gruvbox-baby.config")
 vim.g.gruvbox_baby_highlights = {
     Normal = {bg = '#2b2b2b'},
     SpecialKey = { fg = c.soft_green },
-    IndentBlanklineChar = { fg = '#606b6b' },
-    IndentBlanklineSpaceChar = { fg = '#606b6b' },
+    IndentBlanklineChar = { fg = '#4f5353' },
+    IndentBlanklineSpaceChar = { fg = '#4f5353' },
     IndentBlanklineContextChar = { fg = '#365050' },
     TSParameter = { fg = '#69d1fb' },
     TSVariable = { fg = c.foreground },
