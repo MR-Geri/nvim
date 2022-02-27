@@ -257,7 +257,7 @@ nmap  <F8> :TagbarToggle <CR>
 nnoremap tn :tabnew<CR>:NERDTree<CR>
 nnoremap tt :terminal<CR><Insert>
 " Formatting
-map  <F2> :Neoformat <CR> 
+map  <F2> :Neoformat <CR> :w <CR> 
 map  <F3> :Neomake <CR>
 map <F4> :NeomakeClean <CR>
 map <lo> :lopen <CR>
