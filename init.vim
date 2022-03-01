@@ -51,6 +51,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'kyazdani42/nvim-web-devicons'
 
+" html
+Plug 'mattn/emmet-vim'
+
 " Search
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -109,6 +112,8 @@ let g:neoformat_enabled_python = ['autopep8', 'yapf']
 "let g:neoformat_verbose  =  1
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_open_list = 2
+" html
+let g:user_emmet_leader_key='<C-M>'
 
 lua << EOF
 --settings url: https://github.com/luisiacc/gruvbox-baby/blob/main/lua/gruvbox-baby/theme.lua
@@ -345,7 +350,7 @@ require'nvim-treesitter.configs'.setup {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'clangd' }
+local servers = { 'pyright', 'clangd', 'html' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
