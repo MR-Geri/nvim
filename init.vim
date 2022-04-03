@@ -4,9 +4,6 @@ set number
 set noswapfile
 set scrolloff=7
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
 set expandtab
 set autoindent
 set fileformat=unix
@@ -76,26 +73,18 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'fisadev/vim-isort'
 Plug 'mitsuhiko/vim-jinja'
 
+" Sreenshot
+Plug 'kristijanhusak/vim-carbon-now-sh'
+
 call plug#end()
 
-" colorscheme gruvbox
-"colorscheme OceanicNext
-"let g:material_terminal_italics = 1
-" variants: default, palenight, ocean, lighter, darker, default-community,
-"           palenight-community, ocean-community, lighter-community,
-"           darker-community
-"let g:material_theme_style = 'darker'
-"colorscheme material
-"if (has('termguicolors'))
-"  set termguicolors
-"endif
+autocmd FileType python set tabstop=4
+autocmd FileType python set softtabstop=4
+autocmd FileType python set shiftwidth=4
+autocmd FileType c,cpp set tabstop=2
+autocmd FileType c,cpp set softtabstop=2
+autocmd FileType c,cpp set shiftwidth=2
 
-" variants: mirage, dark, dark
-"let ayucolor="mirage"
-"colorscheme ayu
-
-
-" turn off search highlight
 nnoremap ,<space> :nohlsearch<CR>
 " StatusLine
 lua << END
@@ -107,13 +96,22 @@ require('lualine').setup {
     }
 }
 END
+autocmd InsertLeave * if &readonly==0 && filereadable(bufname('%')) | silent update | endif
+
+" Screenshot
+let g:carbon_now_sh_options =
+\ { 'ln': 'true',
+  \ 'fm': 'monokai',
+  \ 'wt': 'none' }
+
+
 " Autoformatting
 let g:neoformat_enabled_python = ['autopep8', 'yapf']
 "let g:neoformat_verbose  =  1
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_open_list = 2
 " html
-let g:user_emmet_leader_key='<C-M>'
+let g:user_emmet_leader_key='<C-L>'
 
 lua << EOF
 --settings url: https://github.com/luisiacc/gruvbox-baby/blob/main/lua/gruvbox-baby/theme.lua
@@ -267,6 +265,10 @@ map  <F3> :Neomake <CR>
 map <F4> :NeomakeClean <CR>
 map <lo> :lopen <CR>
 
+map <F6> :LspRestart <CR>
+
+" carbon
+map <F7> :CarbonNowSh <CR>
 
 lua << EOF
 
@@ -291,7 +293,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<F6>', '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR><cmd>edit!<CR>', opts)
+--  buf_set_keymap('n', '<F6>', '<cmd>w<CR><cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR><cmd>edit!<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders)))<CR>', opts)
