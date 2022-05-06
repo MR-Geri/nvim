@@ -437,6 +437,7 @@ function! s:Bclose(bang, buffer)
   execute wcurrent.'wincmd w'
 endfunction
 
+vnoremap z<SPACE> :<c-u>let temp_variable=@"<CR>gvy:<c-u>let @/='\V<C-R>=escape(@",'/\')<CR>'<CR>:let @"=temp_variable<CR>:<c-u>set hlsearch<CR>
 map gn :bn<cr>
 map gp :bp<cr>
 map gw :Bclose<cr>
@@ -463,3 +464,5 @@ autocmd FileType vim vmap <buffer> uc :norm ^x^x<CR>
 set autochdir
 autocmd  VimEnter * NERDTree 
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" highlight text 
