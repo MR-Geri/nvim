@@ -6,7 +6,7 @@ set scrolloff=7
 
 set expandtab
 set autoindent
-set fileformat=unix
+set fileformat=un
 filetype indent on      " load filetype-specific indent files
 
 inoremap jk <esc>
