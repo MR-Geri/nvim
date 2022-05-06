@@ -16,7 +16,7 @@ set helplang=ru
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'neovim/nvim-lspconfig'
+Plug 'neovim/nvim-lspconfig', { 'tag': 'v0.1.3' }
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -310,7 +310,7 @@ end
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "maintained",
+  ensure_installed = { "c", "lua", "python" },
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -465,4 +465,4 @@ set autochdir
 autocmd  VimEnter * NERDTree 
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-" highlight text 
+" highlight text
