@@ -77,8 +77,11 @@ Plug 'mitsuhiko/vim-jinja'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 
 " Debugger
+Plug 'puremourning/vimspector'
 
 call plug#end()
+
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools' ]
 
 autocmd FileType python set tabstop=4
 autocmd FileType python set softtabstop=4
@@ -132,7 +135,6 @@ vim.g.gruvbox_baby_highlights = {
     Visual = { bg = "#504945" },
 }
 vim.cmd[[colorscheme gruvbox-baby]]
-
 
 
 vim.o.completeopt = 'menuone,noselect'
@@ -262,6 +264,7 @@ nnoremap fj :Telescope <cr>
 nmap  <F8> :TagbarToggle <CR> 
 nnoremap tn :tabnew<CR>:NERDTree<CR>
 nnoremap tt :terminal<CR><Insert>
+nnoremap tc :tabclose<CR>
 " Formatting
 map  <F2> :Neoformat <CR> :w <CR> 
 map  <F3> :Neomake <CR>
@@ -469,4 +472,9 @@ set autochdir
 autocmd  VimEnter * NERDTree 
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-" highlight text
+" Debugger
+noremap 1<SPACE> <Plug>VimspectorContinue
+noremap 2<SPACE> <Plug>VimspectorStop
+noremap 3<SPACE> <Plug>VimspectorToggleBreakpoint
+noremap 4<SPACE> <Plug>VimspectorRunToCursor
+noremap <F9> <Plug>VimspectorStepOver
