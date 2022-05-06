@@ -76,6 +76,8 @@ Plug 'mitsuhiko/vim-jinja'
 " Sreenshot
 Plug 'kristijanhusak/vim-carbon-now-sh'
 
+" Debugger
+
 call plug#end()
 
 autocmd FileType python set tabstop=4
@@ -118,16 +120,17 @@ lua << EOF
 local c = require("gruvbox-baby.colors").config()
 config_gruvbox = require("gruvbox-baby.config")
 vim.g.gruvbox_baby_highlights = {
-    Normal = {bg = '#2b2b2b'},
+    Normal = { bg = "#2b2b2b" },
     SpecialKey = { fg = c.soft_green },
     IndentBlanklineChar = { fg = '#4f5353' },
     IndentBlanklineSpaceChar = { fg = '#4f5353' },
     IndentBlanklineContextChar = { fg = '#365050' },
-    TSParameter = { fg = '#69d1fb' },
-    TSVariable = { fg = c.foreground },
+    tsparameter = { fg = '#69d1fb' },
+    TSVariable = { fg = "#ebdbb2" },
     pythonTSVariable = { fg = c.foreground, bg = c.NONE, style = "NONE" },
     CursorLine = { bg = "#494240" },
-    }
+    Visual = { bg = "#504945" },
+}
 vim.cmd[[colorscheme gruvbox-baby]]
 
 
@@ -458,6 +461,7 @@ autocmd FileType c vmap <buffer> uc :norm ^x^x<CR>
 autocmd FileType vim vmap <buffer> cc :norm i--<CR>
 autocmd FileType vim vmap <buffer> uc :norm ^x^x<CR>
 
+" Debugger
 
 
 " NERDTree
