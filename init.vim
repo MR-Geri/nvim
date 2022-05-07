@@ -464,9 +464,6 @@ autocmd FileType c vmap <buffer> uc :norm ^x^x<CR>
 autocmd FileType vim vmap <buffer> cc :norm i--<CR>
 autocmd FileType vim vmap <buffer> uc :norm ^x^x<CR>
 
-" Debugger
-
-
 " NERDTree
 set autochdir
 autocmd  VimEnter * NERDTree 
@@ -474,7 +471,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 " Debugger
 noremap 1<SPACE> <Plug>VimspectorContinue
-noremap 2<SPACE> <Plug>VimspectorStop
+noremap 2<SPACE> <Plug>VimspectorReset
 noremap 3<SPACE> <Plug>VimspectorToggleBreakpoint
 noremap 4<SPACE> <Plug>VimspectorRunToCursor
 noremap <F9> <Plug>VimspectorStepOver
