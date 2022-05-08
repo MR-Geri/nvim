@@ -77,11 +77,13 @@ Plug 'mitsuhiko/vim-jinja'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 
 " Debugger
-Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector', {
+  \ 'do': 'python3 install_gadget.py --enable-vscode-cpptools'
+  \ }
 
 call plug#end()
 
-let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools' ]
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
 autocmd FileType python set tabstop=4
 autocmd FileType python set softtabstop=4
@@ -456,8 +458,8 @@ autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal poe
 autocmd FileType python vmap <buffer> cc :norm i#<CR>
 autocmd FileType python vmap <buffer> uc :norm ^x<CR>
 
-autocmd FileType c map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm; ./comp_file<CR><Insert>
-autocmd FileType c imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm; ./comp_file<CR><Insert>
+autocmd FileType c map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+autocmd FileType c imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
 autocmd FileType c vmap <buffer> cc :norm i//<CR>
 autocmd FileType c vmap <buffer> uc :norm ^x^x<CR>
 
@@ -471,7 +473,8 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 " Debugger
 noremap 1<SPACE> <Plug>VimspectorContinue
-noremap 2<SPACE> <Plug>VimspectorReset
+noremap 2<SPACE> :VimspectorReset<CR>
 noremap 3<SPACE> <Plug>VimspectorToggleBreakpoint
 noremap 4<SPACE> <Plug>VimspectorRunToCursor
 noremap <F9> <Plug>VimspectorStepOver
+noremap <F10> <Plug>VimspectorStepInto
