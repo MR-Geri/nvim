@@ -453,8 +453,11 @@ map gw :Bclose<cr>
 
 autocmd FileType python,c,cpp set colorcolumn=80
 
-autocmd FileType python map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert>
-autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert>
+autocmd FileType python if !empty(expand(glob("pyproject.toml"))) | map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert> | endif
+autocmd FileType python if !empty(expand(glob("pyproject.toml"))) | imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert> | endif
+autocmd FileType python if empty(expand(glob("pyproject.toml"))) | map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal python %<CR><Insert> | endif
+autocmd FileType python if empty(expand(glob("pyproject.toml"))) | imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal python %<CR><Insert> | endif
+
 autocmd FileType python vmap <buffer> cc :norm i#<CR>
 autocmd FileType python vmap <buffer> uc :norm ^x<CR>
 
