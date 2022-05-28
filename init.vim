@@ -1,6 +1,6 @@
 set mouse=a  " enable mouse
 set encoding=utf-8
-set relativenumber
+set number relativenumber
 set noswapfile
 set scrolloff=7
 
