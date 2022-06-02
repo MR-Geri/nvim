@@ -52,6 +52,9 @@ Plug 'kyazdani42/nvim-web-devicons'
 " html
 Plug 'mattn/emmet-vim'
 
+" MarkDown
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 " Search
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
