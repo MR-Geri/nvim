@@ -89,9 +89,9 @@ call plug#end()
 
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
-autocmd FileType python set tabstop=4
-autocmd FileType python set softtabstop=4
-autocmd FileType python set shiftwidth=4
+autocmd FileType python,markdown set tabstop=4
+autocmd FileType python,markdown set softtabstop=4
+autocmd FileType pytho,markdownn set shiftwidth=4
 autocmd FileType c,cpp set tabstop=2
 autocmd FileType c,cpp set softtabstop=2
 autocmd FileType c,cpp set shiftwidth=2
