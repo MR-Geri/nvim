@@ -1,7 +1,7 @@
 Зависимости:  
 ```
 pip install poetry flake8 pyright yapf toml autopep8
-sudo dnf install clangd
+sudo dnf install clangd g++
 ```
 ```
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
