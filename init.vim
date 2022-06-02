@@ -14,6 +14,7 @@ set cursorline
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz 
 set helplang=ru
 
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'neovim/nvim-lspconfig', { 'tag': 'v0.1.3' }
@@ -461,10 +462,14 @@ autocmd FileType python if empty(expand(glob("pyproject.toml"))) | imap <buffer>
 autocmd FileType python vmap <buffer> cc :norm i#<CR>
 autocmd FileType python vmap <buffer> uc :norm ^x<CR>
 
+
 autocmd FileType c map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
 autocmd FileType c imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+
 autocmd FileType c vmap <buffer> cc :norm i//<CR>
 autocmd FileType c vmap <buffer> uc :norm ^x^x<CR>
+
+
 
 autocmd FileType vim vmap <buffer> cc :norm i--<CR>
 autocmd FileType vim vmap <buffer> uc :norm ^x^x<CR>
