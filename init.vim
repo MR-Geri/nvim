@@ -322,7 +322,7 @@ end
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = { "c", "lua", "python" },
+  ensure_installed = { "c", "cpp", "lua", "python" },
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -466,11 +466,11 @@ autocmd FileType python vmap <buffer> cc :norm i#<CR>
 autocmd FileType python vmap <buffer> uc :norm ^x<CR>
 
 
-autocmd FileType c map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
-autocmd FileType c imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+autocmd FileType c,cpp map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+autocmd FileType c,cpp imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
 
-autocmd FileType c vmap <buffer> cc :norm i//<CR>
-autocmd FileType c vmap <buffer> uc :norm ^x^x<CR>
+autocmd FileType c,cpp vmap <buffer> cc :norm i//<CR>
+autocmd FileType c,cpp vmap <buffer> uc :norm ^x^x<CR>
 
 
 
