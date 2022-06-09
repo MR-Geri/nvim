@@ -261,10 +261,6 @@ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({map_char = {tex = ""
 EOF
 
 " Search
-nnoremap ff <cmd>Telescope find_files<cr>
-nnoremap fg <cmd>Telescope live_grep<cr>
-nnoremap fb <cmd>Telescope buffers<cr>
-nnoremap fh <cmd>Telescope help_tags<cr>
 nnoremap fj :Telescope <cr>
 
 nmap  <F8> :TagbarToggle <CR> 
@@ -456,25 +452,28 @@ map gw :Bclose<cr>
 
 
 autocmd FileType python,c,cpp set colorcolumn=80
+autocmd FileType python,c,cpp map <buffer> <F5><F5> :w<CR>:belowright 20split<CR>:terminal<CR><Insert>
 
 autocmd FileType python if !empty(expand(glob("pyproject.toml"))) | map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert> | endif
 autocmd FileType python if !empty(expand(glob("pyproject.toml"))) | imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert> | endif
 autocmd FileType python if empty(expand(glob("pyproject.toml"))) | map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal python %<CR><Insert> | endif
 autocmd FileType python if empty(expand(glob("pyproject.toml"))) | imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal python %<CR><Insert> | endif
 
-autocmd FileType python vmap <buffer> cc :norm i#<CR>
-autocmd FileType python vmap <buffer> uc :norm ^x<CR>
 
 
 autocmd FileType c map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
-autocmd FileType c imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+autocmd FileType c imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+
 autocmd FileType cpp map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -lstdc++ -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
-autocmd FileType cpp imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -lstdc++ -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+autocmd FileType cpp imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal gcc % -lstdc++ -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+
+
+
+autocmd FileType python vmap <buffer> cc :norm i#<CR>
+autocmd FileType python vmap <buffer> uc :norm ^x<CR>
 
 autocmd FileType c,cpp vmap <buffer> cc :norm i//<CR>
 autocmd FileType c,cpp vmap <buffer> uc :norm ^x^x<CR>
-
-
 
 autocmd FileType vim vmap <buffer> cc :norm i--<CR>
 autocmd FileType vim vmap <buffer> uc :norm ^x^x<CR>
