@@ -267,6 +267,7 @@ nmap  <F8> :TagbarToggle <CR>
 nnoremap tn :tabnew<CR>:NERDTree<CR>
 nnoremap tt :terminal<CR><Insert>
 nnoremap tc :tabclose<CR>
+nnoremap nt :w<CR>:belowright 20split<CR>:terminal<CR><Insert>
 " Formatting
 map  <F2> :Neoformat <CR> :w <CR> 
 map  <F3> :Neomake <CR>
@@ -452,7 +453,7 @@ map gw :Bclose<cr>
 
 
 autocmd FileType python,c,cpp set colorcolumn=80
-autocmd FileType python,c,cpp map <buffer> <F5><F5> :w<CR>:belowright 20split<CR>:terminal<CR><Insert>
+autocmd FileType python,c,cpp 
 
 autocmd FileType python if !empty(expand(glob("pyproject.toml"))) | map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert> | endif
 autocmd FileType python if !empty(expand(glob("pyproject.toml"))) | imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert> | endif
