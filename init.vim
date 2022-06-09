@@ -466,8 +466,10 @@ autocmd FileType python vmap <buffer> cc :norm i#<CR>
 autocmd FileType python vmap <buffer> uc :norm ^x<CR>
 
 
-autocmd FileType c,cpp map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
-autocmd FileType c,cpp imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+autocmd FileType c map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+autocmd FileType c imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -std=c99 -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+autocmd FileType cpp map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -lstdc++ -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
+autocmd FileType cpp imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal gcc % -lstdc++ -o comp_file -lm -g -O0; ./comp_file<CR><Insert>
 
 autocmd FileType c,cpp vmap <buffer> cc :norm i//<CR>
 autocmd FileType c,cpp vmap <buffer> uc :norm ^x^x<CR>
