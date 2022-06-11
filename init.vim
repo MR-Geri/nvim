@@ -112,8 +112,9 @@ autocmd InsertLeave * if &readonly==0 && filereadable(bufname('%')) | silent upd
 " Screenshot
 let g:carbon_now_sh_options =
 \ { 'ln': 'true',
-  \ 'fm': 'monokai',
-  \ 'wt': 'none' }
+  \ 't': 'monokai',
+  \ 'wt': 'none',
+  \ 'es': '4x' }
 
 
 " Autoformatting
@@ -267,7 +268,7 @@ nmap  <F8> :TagbarToggle <CR>
 nnoremap tn :tabnew<CR>:NERDTree<CR>
 nnoremap tt :terminal<CR><Insert>
 nnoremap tc :tabclose<CR>
-nnoremap nt :w<CR>:belowright 20split<CR>:terminal<CR><Insert>
+nnoremap nt :w<CR>:belowright 10split<CR>:terminal<CR><Insert>
 " Formatting
 map  <F2> :Neoformat <CR> :w <CR> 
 map  <F3> :Neomake <CR>
