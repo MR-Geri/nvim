@@ -456,10 +456,8 @@ map gw :Bclose<cr>
 autocmd FileType python,c,cpp set colorcolumn=80
 autocmd FileType python,c,cpp 
 
-autocmd FileType python if !empty(expand(glob("pyproject.toml"))) | map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert> | endif
-autocmd FileType python if !empty(expand(glob("pyproject.toml"))) | imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert> | endif
-autocmd FileType python if empty(expand(glob("pyproject.toml"))) | map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal python %<CR><Insert> | endif
-autocmd FileType python if empty(expand(glob("pyproject.toml"))) | imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal python %<CR><Insert> | endif
+autocmd FileType python if !empty(expand(glob("pyproject.toml"))) || !empty(expand(glob("../pyproject.toml"))) | map <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert> | else | map <buffer> <F5> :w<CR>:tabnew %<CR>:terminal python %<CR><Insert> | endif
+autocmd FileType python if !empty(expand(glob("pyproject.toml"))) || !empty(expand(glob("../pyproject.toml"))) | imap <buffer> <F5> <esc>:w<CR>:tabnew %<CR>:terminal poetry run python %<CR><Insert> | else | imap <buffer> <F5> :w<CR>:tabnew %<CR>:terminal python %<CR><Insert> | endif
 
 
 
