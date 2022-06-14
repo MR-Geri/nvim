@@ -89,9 +89,9 @@ call plug#end()
 
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
-autocmd FileType python set tabstop=4
-autocmd FileType python set softtabstop=4
-autocmd FileType pytho set shiftwidth=4
+autocmd FileType python,html set tabstop=4
+autocmd FileType python,html set softtabstop=4
+autocmd FileType python,html set shiftwidth=4
 autocmd FileType c,cpp,markdown set tabstop=2
 autocmd FileType c,cpp,markdown set softtabstop=2
 autocmd FileType c,cpp,markdown set shiftwidth=2
@@ -119,6 +119,7 @@ let g:carbon_now_sh_options =
 
 " Autoformatting
 let g:neoformat_enabled_python = ['autopep8', 'yapf']
+let g:neoformat_enabled_javascript = ['jsbeautifier']
 "let g:neoformat_verbose  =  1
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_open_list = 2
@@ -320,13 +321,13 @@ end
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = { "c", "cpp", "lua", "python" },
+  ensure_installed = { "c", "cpp", "lua", "python", "html", "javascript"},
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
   -- List of parsers to ignore installing
-  ignore_install = { "javascript" },
+  ignore_install = {  },
 
   highlight = {
     -- `false` will disable the whole extension
