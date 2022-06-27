@@ -281,6 +281,26 @@ map <F6> :LspRestart <CR>
 " carbon
 map <F7> :CarbonNowSh <CR>
 
+" Проверка орфографии
+if version >= 700
+"   По умолчанию проверка орфографии выключена.
+    setlocal spell spelllang=
+    setlocal nospell
+    function ChangeSpellLang()
+        if &spelllang =~ "ru,en"
+            setlocal spell spelllang=
+            setlocal nospell
+            echo "spelllang: off"
+        else
+            setlocal spell spelllang=ru,en
+            echo "spelllang: ru,en"
+        endif
+    endfunc
+
+    " map spell on/off for English/Russian
+    map <F11> <Esc>:call ChangeSpellLang()<CR>
+endif
+
 lua << EOF
 
 
